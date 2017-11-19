@@ -8,7 +8,18 @@ var entryPoint = './src/main.js';
 var exportPath = path.resolve(__dirname, './build');
 
 // Enviroment flag
-var plugins = [];
+var plugins = [
+	new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        Popper: ['popper.js', 'default'],
+        // In case you imported plugins individually, you must also require them here:
+        Util: "exports-loader?Util!bootstrap/js/dist/util",
+        Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+        Tether: 'tether', tether: 'tether'
+      })
+];
 var env = process.env.WEBPACK_ENV;
 
 // Differ settings based on production flag
@@ -48,7 +59,14 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-      }
+      },
+      {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
     ]
   },
   resolve: {
