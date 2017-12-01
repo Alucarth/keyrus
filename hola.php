@@ -4,8 +4,11 @@
 	<title>HOla mundo </title>
 </head>
 <body>
-	<label>Hola Muchachos esto es un test</label>
-	<input type="text" class="form-control">
+	<div class="content">
+		<label> ahora se ve bien el espacio de trabajo</label>
+		<input type="text" class="form-control">
+			
+	</div>
 	<script src="build/app.js"></script>
 </body>
 </html>
