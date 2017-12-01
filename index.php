@@ -21,7 +21,7 @@
 
                 <div>
                   &nbsp&nbsp
-                  <a  @click="editarTarea(tarea)" ><span class="fa fa-edit" ></span></a>
+                  <a  @click="editarTarea(tarea)"  ><span class="fa fa-edit" ></span></a>
                   &nbsp&nbsp
                   <a @click="eliminarTarea(index)" ><span class="fa fa-trash" ></span></a>
                   </li>
@@ -31,13 +31,13 @@
 
               <template v-else>
                 
-                <input type="text" class="form-control" name="" v-model="tarea_backup">
+                <input type="text" class="form-control" @keypress.enter="actualizarTarea(tarea)" @keydown.esc="cancelarTarea(tarea)" name="" v-model="tarea_backup">
 
                 <div>
                  
                   <a @click="actualizarTarea(tarea)"><span class="fa fa-check" ></span></a>
                   &nbsp&nbsp
-                  <a @click="cancelarTarea(tarea)"><span class="fa fa-close" ></span></a>
+                  <a @click="cancelarTarea(tarea)" ><span class="fa fa-close" ></span></a>
                   </li>
                 </div> 
               </template>
@@ -52,7 +52,7 @@
 
         <form @submit.prevent="crearTarea">
           <br>
-          <input v-model="nueva_tarea" ype="text" name="" class="form-control">
+          <input v-model="nueva_tarea" ype="text"  name="" class="form-control">
           <br>
           <button  type="submit" class="btn btn-primary">Crear Tarea</button>
           
